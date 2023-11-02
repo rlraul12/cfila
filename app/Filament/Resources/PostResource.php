@@ -8,6 +8,7 @@ use App\Models\Post;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
+use Filament\Resources\RelationManagers\RelationManager;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -41,12 +42,13 @@ class PostResource extends Resource
                     ->disabled()
                     ->dehydrated()
                     ->maxLength(255),
-                Forms\Components\Textarea::make('body')
+                Forms\Components\RichEditor::make('body')
                     ->required()
                     ->maxLength(65535)
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('image_url')
                     ->image()
+                    ->imageEditor()
                     ->required(),
             ]);
     }
@@ -91,7 +93,7 @@ class PostResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\CommentsRelationManager::class,
         ];
     }
     
