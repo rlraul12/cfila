@@ -59,7 +59,7 @@
                 Minimal Blog
             </a>
             <p class="text-lg text-gray-600">
-                EL RINCON DE ISMA
+                
             </p>
         </div>
     </header>
